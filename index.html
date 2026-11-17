@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata Diri — Sakti Bintang Pamungkas</title>
+
+  <!-- Google Fonts: Fredoka & Quicksand (Playful Cartoon & Comic Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 (Imported Vector Icons, NO Raw Emojis) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ========================================================
+       TEMA: COLORFUL POP-CARTOON DENGAN KUCING MELAYANG & LOGO RESMI
+       Warna Default: Vibrant Sunshine Cartoon Yellow (#ffdf59)
+       ======================================================== */
+    :root {
+      --bg-active: #ffdf59; /* Satu warna background utama yang cerah & colorful */
+      --c-dark: #1a1727;
+      --c-border: #1a1727;
+      
+      --c-yellow: #ffdf59;
+      --c-pink: #ff7597;
+      --c-pink-light: #ffdce5;
+      --c-blue: #38bdf8;
+      --c-blue-light: #e0f2fe;
+      --c-orange: #fb923c;
+      --c-orange-light: #ffedd5;
+      --c-green: #4ade80;
+      --c-green-light: #dcfce7;
+      --c-purple: #c084fc;
+      --c-purple-light: #f3e8ff;
+      --c-white: #ffffff;
+
+      --comic-shadow: 4px 4px 0px var(--c-dark);
+      --comic-shadow-lg: 6px 6px 0px var(--c-dark);
+      --comic-shadow-sm: 3px 3px 0px var(--c-dark);
+      --radius-card: 26px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-active);
+      color: var(--c-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.4s ease;
+    }
+
+    /* ========================================================
+       KUCING-KUCING BERGERAK MELAYANG DI BACKGROUND WEB
+       (Semua background kucing sudah dihapus bersih & transparan)
+       ======================================================== */
+    .floating-cat-bg-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .floating-cat-item {
+      position: absolute;
+      pointer-events: auto;
+      cursor: pointer;
+      user-select: none;
+      filter: drop-shadow(3px 4px 0px rgba(26, 23, 39, 0.35));
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .floating-cat-item:hover {
+      transform: scale(1.25) rotate(10deg) !important;
+    }
+
+    /* Kucing 1: Banana Cat (Kiri Atas Melayang) */
+    .cat-float-1 {
+      top: 12%;
+      left: 4%;
+      width: 82px;
+      animation: driftFloat1 9s ease-in-out infinite alternate;
+    }
+
+    /* Kucing 2: Pop Cat (Kanan Atas Melayang) */
+    .cat-float-2 {
+      top: 22%;
+      right: 4%;
+      width: 88px;
+      animation: driftFloat2 8s ease-in-out infinite alternate;
+    }
+
+    /* Kucing 3: Grey Walking Cat (Kiri Tengah Melayang) */
+    .cat-float-3 {
+      top: 55%;
+      left: 3%;
+      width: 92px;
+      animation: driftFloat3 11s ease-in-out infinite alternate;
+    }
+
+    /* Kucing 4: Banana Cat (Kanan Bawah Melayang) */
+    .cat-float-4 {
+      top: 75%;
+      right: 5%;
+      width: 78px;
+      animation: driftFloat1 10s ease-in-out infinite alternate-reverse;
+    }
+
+    /* Kucing 5: Pop Cat (Tengah Bawah Melayang) */
+    .cat-float-5 {
+      bottom: 6%;
+      left: 12%;
+      width: 74px;
+      animation: driftFloat2 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes driftFloat1 {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      30% { transform: translate(25px, -35px) rotate(10deg); }
+      60% { transform: translate(-20px, -60px) rotate(-8deg); }
+      85% { transform: translate(15px, -20px) rotate(5deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    @keyframes driftFloat2 {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      35% { transform: translate(-30px, 35px) rotate(-12deg); }
+      70% { transform: translate(20px, 65px) rotate(8deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    @keyframes driftFloat3 {
+      0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      33% { transform: translate(35px, 20px) scale(1.08) rotate(10deg); }
+      66% { transform: translate(-25px, 45px) scale(0.95) rotate(-6deg); }
+      100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    }
+
+    /* Container */
+    .app-wrapper {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 24px 20px 80px 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Top Comic Bar */
+    .top-bar-comic {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--c-white);
+      border: 3px solid var(--c-border);
+      border-radius: var(--radius-pill);
+      padding: 10px 22px;
+      box-shadow: var(--comic-shadow);
+      margin-bottom: 26px;
+      animation: bouncePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    /* Logo Sekolah di Header */
+    .school-logo-top {
+      width: 36px;
+      height: 42px;
+      object-fit: contain;
+      filter: drop-shadow(2px 2px 0px rgba(26, 23, 39, 0.3));
+      animation: wiggle 4s infinite ease-in-out;
+    }
+    .brand-title {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--c-dark);
+      letter-spacing: 0.4px;
+    }
+    .brand-badge {
+      background: var(--c-blue-light);
+      border: 2px solid var(--c-border);
+      padding: 4px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--c-dark);
+      box-shadow: 2px 2px 0px var(--c-border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Theme Color Switcher */
+    .theme-palette-picker {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .color-swatch-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--c-border);
+      cursor: pointer;
+      box-shadow: 1px 1px 0px var(--c-border);
+      transition: transform 0.2s ease;
+    }
+    .color-swatch-dot:hover {
+      transform: scale(1.25);
+    }
+    .swatch-yellow { background: #ffdf59; }
+    .swatch-blue { background: #70d6ff; }
+    .swatch-pink { background: #ff97b7; }
+    .swatch-mint { background: #80ed99; }
+    .swatch-orange { background: #ffaa5a; }
+
+    .btn-top-action {
+      background: var(--c-pink-light);
+      border: 2px solid var(--c-border);
+      color: var(--c-dark);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 2px 2px 0px var(--c-border);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-top-action:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--c-border);
+      background: var(--c-pink);
+      color: #fff;
+    }
+
+    /* Hero Banner */
+    .hero-cartoon-card {
+      background: var(--c-white);
+      border: 3px solid var(--c-border);
+      border-radius: 32px;
+      padding: 35px;
+      box-shadow: var(--comic-shadow-lg);
+      margin-bottom: 26px;
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 34px;
+      align-items: center;
+      position: relative;
+      animation: bouncePop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Profile Photo Stage */
+    .photo-stage-wrapper {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      background: linear-gradient(135deg, var(--c-pink-light) 0%, var(--c-yellow) 55%, var(--c-blue-light) 100%);
+      border: 3px solid var(--c-border);
+      border-radius: 28px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      box-shadow: var(--comic-shadow);
+      overflow: hidden;
+    }
+    .photo-stage-wrapper img.profile-img {
+      width: 90%;
+      height: 95%;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(4px 4px 0px rgba(26, 23, 39, 0.25));
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 2;
+    }
+    .photo-stage-wrapper:hover img.profile-img {
+      transform: scale(1.05) translateY(-4px);
+    }
+
+    /* Cat Mascot Badge on Profile Card */
+    .cat-mascot-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: var(--c-pink);
+      border: 3px solid var(--c-border);
+      box-shadow: 3px 3px 0px var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 4;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .cat-mascot-badge img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+    }
+    .cat-mascot-badge:hover {
+      transform: scale(1.2) rotate(14deg);
+      background: var(--c-blue);
+    }
+
+    /* Official School Logo Floating Badge */
+    .school-label-badge {
+      position: absolute;
+      bottom: 12px;
+      background: var(--c-white);
+      border: 2px solid var(--c-border);
+      color: var(--c-dark);
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.76rem;
+      font-weight: 800;
+      box-shadow: 2px 2px 0px var(--c-border);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .school-label-badge img.mini-logo {
+      width: 18px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    /* Hero Bio Details */
+    .hero-info-column {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .status-speech-pill {
+      background: var(--c-green-light);
+      border: 2px solid var(--c-border);
+      color: var(--c-dark);
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 800;
+      width: fit-content;
+      box-shadow: 2px 2px 0px var(--c-border);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-speech-pill i {
+      color: #16a34a;
+    }
+
+    .profile-heading {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2.7rem;
+      font-weight: 700;
+      color: var(--c-dark);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+    .profile-heading span.color-mark {
+      background: var(--c-yellow);
+      padding: 2px 8px;
+      border-radius: 8px;
+      border: 2px solid var(--c-border);
+      box-shadow: 2px 2px 0px var(--c-border);
+      display: inline-block;
+    }
+
+    .typewriter-cartoon {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .type-cursor {
+      border-right: 3px solid #0284c7;
+      padding-right: 4px;
+      animation: cursorBlink 0.75s infinite;
+      color: var(--c-dark);
+    }
+
+    /* Fleksibel Pill Badges */
+    .quick-pill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 4px;
+    }
+    .pill-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      border: 2px solid var(--c-border);
+      font-size: 0.82rem;
+      font-weight: 700;
+      box-shadow: 2px 2px 0px var(--c-border);
+      transition: all 0.2s ease;
+    }
+    .pill-chip:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--c-border);
+    }
+    .chip-pink { background: var(--c-pink-light); }
+    .chip-yellow { background: var(--c-yellow); }
+    .chip-blue { background: var(--c-blue-light); }
+    .chip-orange { background: var(--c-orange-light); }
+
+    /* Action Buttons */
+    .hero-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .btn-cartoon-main {
+      background: var(--c-pink);
+      color: #fff;
+      border: 3px solid var(--c-border);
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: var(--comic-shadow);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+    }
+    .btn-cartoon-main:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: var(--comic-shadow-lg);
+      background: #ff547d;
+    }
+    .btn-cartoon-ghost {
+      background: var(--c-white);
+      color: var(--c-dark);
+      border: 3px solid var(--c-border);
+      padding: 12px 22px;
+      border-radius: var(--radius-pill);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: var(--comic-shadow);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-cartoon-ghost:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: var(--comic-shadow-lg);
+      background: var(--c-blue-light);
+    }
+
+    /* Category Filter Tabs */
+    .filter-tabs-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .tab-pill-btn {
+      background: var(--c-white);
+      border: 2px solid var(--c-border);
+      color: var(--c-dark);
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--comic-shadow-sm);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .tab-pill-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: var(--comic-shadow);
+      background: var(--c-yellow);
+    }
+    .tab-pill-btn.active {
+      background: var(--c-pink);
+      color: #fff;
+      transform: translate(-2px, -2px);
+      box-shadow: var(--comic-shadow);
+    }
+    .tab-pill-btn.active i {
+      color: #fff;
+    }
+
+    /* Sections Flow */
+    .flow-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .comic-card-panel {
+      background: var(--c-white);
+      border: 3px solid var(--c-border);
+      border-radius: var(--radius-card);
+      padding: 28px;
+      box-shadow: var(--comic-shadow);
+      transition: transform 0.3s ease;
+      animation: fadeIn 0.6s ease;
+    }
+    .comic-card-panel:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--comic-shadow-lg);
+    }
+
+    .panel-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px dashed rgba(26, 23, 39, 0.2);
+    }
+    .panel-title-text {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--c-dark);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .title-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 2px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      box-shadow: 2px 2px 0px var(--c-border);
+      color: var(--c-dark);
+    }
+    .box-pink { background: var(--c-pink-light); }
+    .box-yellow { background: var(--c-yellow); }
+    .box-blue { background: var(--c-blue-light); }
+    .box-orange { background: var(--c-orange-light); }
+
+    .panel-hint-pill {
+      background: var(--c-yellow);
+      border: 2px solid var(--c-border);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--c-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Fleksibel Biodata Bubble Grid */
+    .bio-pill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .bio-pill-item {
+      background: #fdfbf7;
+      border: 2px solid var(--c-border);
+      border-radius: 18px;
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--c-border);
+      transition: all 0.2s ease;
+    }
+    .bio-pill-item:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--c-border);
+      background: var(--c-white);
+    }
+    .pill-left-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pill-icon-square {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 2px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--c-dark);
+      box-shadow: 2px 2px 0px var(--c-border);
+      flex-shrink: 0;
+    }
+    .pill-label-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .pill-value-text {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--c-dark);
+      margin-top: 1px;
+    }
+    .pill-copy-glyph {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      transition: color 0.2s ease;
+    }
+    .bio-pill-item:hover .pill-copy-glyph {
+      color: var(--c-pink);
+    }
+
+    /* SECTION PENDIDIKAN DENGAN LOGO RESMI SMK PGRI 2 */
+    .education-layout {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 22px;
+      align-items: center;
+    }
+    .edu-text-card {
+      background: var(--c-blue-light);
+      border: 2px solid var(--c-border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--comic-shadow-sm);
+    }
+    .edu-header-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--c-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .edu-badge-active {
+      display: inline-block;
+      background: var(--c-yellow);
+      border: 2px solid var(--c-border);
+      padding: 3px 12px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      font-size: 0.76rem;
+      margin-bottom: 12px;
+    }
+    .edu-description {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--c-dark);
+      font-weight: 600;
+    }
+
+    /* Wadah Logo Resmi SMK PGRI 2 */
+    .edu-logo-showcase {
+      background: var(--c-white);
+      border: 3px solid var(--c-border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--comic-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .edu-logo-showcase img.official-school-logo {
+      width: 130px;
+      height: 155px;
+      object-fit: contain;
+      filter: drop-shadow(3px 3px 0px rgba(26, 23, 39, 0.25));
+      transition: transform 0.3s ease;
+    }
+    .edu-logo-showcase:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: var(--comic-shadow-lg);
+    }
+    .edu-logo-showcase:hover img.official-school-logo {
+      transform: scale(1.08);
+    }
+    .school-motto-tag {
+      margin-top: 10px;
+      background: var(--c-yellow);
+      border: 2px solid var(--c-border);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--c-dark);
+    }
+
+    /* Karakter & Potensi */
+    .char-badge-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .char-badge-item {
+      background: var(--c-white);
+      border: 2px solid var(--c-border);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      box-shadow: 2px 2px 0px var(--c-border);
+      transition: all 0.2s ease;
+    }
+    .char-badge-item:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 4px 4px 0px var(--c-border);
+    }
+    .char-circle-glyph {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      color: var(--c-dark);
+      flex-shrink: 0;
+      box-shadow: 2px 2px 0px var(--c-border);
+    }
+    .char-text-box h4 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--c-dark);
+      margin-bottom: 3px;
+    }
+    .char-text-box p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #475569;
+      line-height: 1.45;
+    }
+
+    /* Motto Section dengan Kucing Interaktif */
+    .motto-feature-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+    .popcat-interactive-pod {
+      width: 150px;
+      height: 150px;
+      border: 3px solid var(--c-border);
+      border-radius: 28px;
+      background: var(--c-pink);
+      box-shadow: var(--comic-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .popcat-interactive-pod img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+    }
+    .popcat-interactive-pod:hover {
+      transform: scale(1.1) rotate(-4deg);
+      background: var(--c-yellow);
+    }
+    .popcat-interactive-pod:active {
+      transform: scale(0.95);
+    }
+
+    .motto-bubble-quote {
+      background: var(--c-yellow-light);
+      border: 3px solid var(--c-border);
+      border-radius: 24px;
+      padding: 22px 26px;
+      box-shadow: var(--comic-shadow-sm);
+      position: relative;
+    }
+    .motto-bubble-quote::before {
+      content: '';
+      position: absolute;
+      left: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 8px 14px 8px 0;
+      border-style: solid;
+      border-color: transparent var(--c-border) transparent transparent;
+    }
+    .motto-quote-p {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--c-dark);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .motto-author-tag {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--c-orange);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Pop Toast Notification */
+    .comic-pop-toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--c-yellow);
+      border: 3px solid var(--c-border);
+      color: var(--c-dark);
+      padding: 12px 22px;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--comic-shadow);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      z-index: 9999;
+      transform: translateY(100px) scale(0.8);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+    .comic-pop-toast.show {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 22px;
+      border-top: 3px dashed var(--c-border);
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--c-dark);
+    }
+    footer span {
+      background: var(--c-white);
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--c-border);
+    }
+
+    /* Keyframes */
+    @keyframes bouncePop {
+      0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+      70% { transform: scale(1.03) translateY(-4px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-8deg); }
+      75% { transform: rotate(8deg); }
+    }
+    @keyframes cursorBlink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #0284c7; }
+    }
+    @keyframes catClickWiggle {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3) rotate(12deg); }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero-cartoon-card {
+        grid-template-columns: 1fr;
+        padding: 26px 20px;
+        text-align: center;
+      }
+      .photo-stage-wrapper {
+        max-width: 270px;
+        height: 320px;
+        margin: 0 auto;
+      }
+      .hero-info-column {
+        align-items: center;
+      }
+      .typewriter-cartoon, .quick-pill-cloud, .hero-btn-row {
+        justify-content: center;
+      }
+      .education-layout {
+        grid-template-columns: 1fr;
+      }
+      .edu-logo-showcase {
+        max-width: 260px;
+        margin: 0 auto;
+      }
+      .motto-feature-row {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .popcat-interactive-pod {
+        margin: 0 auto;
+      }
+      .motto-bubble-quote::before {
+        display: none;
+      }
+      .motto-author-tag {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .app-wrapper {
+        padding: 16px 12px 60px 12px;
+      }
+      .profile-heading {
+        font-size: 2rem;
+      }
+      .comic-card-panel {
+        padding: 20px 16px;
+      }
+      .brand-badge {
+        display: none;
+      }
+      .theme-palette-picker {
+        display: none;
+      }
+      .floating-cat-item {
+        width: 60px !important;
+      }
+    }
+
+    @media print {
+      body { background: #fff !important; }
+      .floating-cat-bg-layer, .top-bar-comic, .filter-tabs-container, .hero-btn-row, .comic-pop-toast { display: none !important; }
+      .hero-cartoon-card, .comic-card-panel { box-shadow: none !important; border: 1px solid #999 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       KUCING-KUCING BERGERAK MELAYANG DI BACKGROUND WEB
+       (Background transparan, bisa diklik untuk suara meong/pop!)
+       ======================================================== -->
+  <div class="floating-cat-bg-layer" aria-hidden="true">
+    <!-- 1. Banana Cat Melayang Kiri Atas -->
+    <img src="cat-banana-nobg.png" alt="Banana Cat Floating" class="floating-cat-item cat-float-1" data-cat="banana" title="Klik Banana Cat!">
+    
+    <!-- 2. Pop Cat Melayang Kanan Atas -->
+    <img src="cat-pop-nobg.png" alt="Pop Cat Floating" class="floating-cat-item cat-float-2" data-cat="pop" title="Klik Pop Cat!">
+    
+    <!-- 3. Grey Cat Melayang Kiri Tengah -->
+    <img src="cat-grey-nobg.png" alt="Grey Cat Floating" class="floating-cat-item cat-float-3" data-cat="grey" title="Klik Grey Cat!">
+    
+    <!-- 4. Banana Cat Melayang Kanan Bawah -->
+    <img src="cat-banana-nobg.png" alt="Banana Cat Floating" class="floating-cat-item cat-float-4" data-cat="banana" title="Klik Banana Cat!">
+    
+    <!-- 5. Pop Cat Melayang Kiri Bawah -->
+    <img src="cat-pop-nobg.png" alt="Pop Cat Floating" class="floating-cat-item cat-float-5" data-cat="pop" title="Klik Pop Cat!">
+  </div>
+
+  <div class="app-wrapper">
+
+    <!-- Top Comic Bar dengan Logo Resmi SMK PGRI 2 -->
+    <header class="top-bar-comic">
+      <div class="brand-section">
+        <!-- Logo Resmi SMK PGRI 2 Ponorogo -->
+        <img src="logo-smk-nobg.png" alt="Logo SMK PGRI 2 Ponorogo" class="school-logo-top">
+        <span class="brand-title">BIODATA SISWA</span>
+        <span class="brand-badge">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>SMK PGRI 2 PONOROGO</span>
+        </span>
+      </div>
+
+      <!-- Theme Color Switcher -->
+      <div class="theme-palette-picker" title="Ubah Satu Warna Background!">
+        <span style="font-size: 0.72rem; font-weight: 800; color: #64748b; margin-right: 4px;">WARNA:</span>
+        <div class="color-swatch-dot swatch-yellow" data-bg="#ffdf59" title="Kuning Ceria"></div>
+        <div class="color-swatch-dot swatch-blue" data-bg="#70d6ff" title="Biru Langit"></div>
+        <div class="color-swatch-dot swatch-pink" data-bg="#ff97b7" title="Merah Muda Permen"></div>
+        <div class="color-swatch-dot swatch-mint" data-bg="#80ed99" title="Mint Segar"></div>
+        <div class="color-swatch-dot swatch-orange" data-bg="#ffaa5a" title="Oranye Enerjik"></div>
+      </div>
+
+      <div style="display: flex; gap: 8px;">
+        <button class="btn-top-action" id="btn-quick-copy" title="Salin Biodata">
+          <i class="fa-regular fa-copy"></i>
+          <span>Salin</span>
+        </button>
+        <button class="btn-top-action" id="btn-print" title="Cetak Halaman">
+          <i class="fa-solid fa-print"></i>
+          <span>Cetak</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Cartoon Card -->
+    <section class="hero-cartoon-card">
+      
+      <!-- Stage Foto Transparan dengan Maskot & Logo Resmi -->
+      <div class="photo-stage-wrapper">
+        <!-- Maskot Pop Cat yang sudah dihapus backgroundnya -->
+        <div class="cat-mascot-badge" id="mascot-cat-top" title="Klik Pop Cat!">
+          <img src="cat-pop-nobg.png" alt="Pop Cat Cartoon Cutout">
+        </div>
+
+        <!-- Foto Resmi Sakti Bintang Pamungkas (Background Transparan) -->
+        <img src="foto-nobg.png" alt="Sakti Bintang Pamungkas" class="profile-img">
+
+        <!-- Lencana Logo Resmi SMK PGRI 2 Ponorogo -->
+        <div class="school-label-badge">
+          <img src="logo-smk-nobg.png" alt="Logo SMK PGRI 2" class="mini-logo">
+          <span>SMK PGRI 2 PONOROGO</span>
+        </div>
+      </div>
+
+      <!-- Hero Bio Details -->
+      <div class="hero-info-column">
+        <div class="status-speech-pill">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Siswa Aktif Kelas 12</span>
+        </div>
+
+        <h1 class="profile-heading">
+          SAKTI BINTANG <span class="color-mark">PAMUNGKAS</span>
+        </h1>
+
+        <div class="typewriter-cartoon">
+          <i class="fa-solid fa-bolt" style="font-size: 1.1rem; color: #ff922b;"></i>
+          <span class="type-cursor" id="typewriter"></span>
+        </div>
+
+        <!-- Fleksibel Pill Cloud (Imported Vector Icons) -->
+        <div class="quick-pill-cloud">
+          <div class="pill-chip chip-pink">
+            <i class="fa-solid fa-location-dot" style="color: #ff3366;"></i>
+            <span>Ponorogo, Jawa Timur</span>
+          </div>
+          <div class="pill-chip chip-yellow">
+            <i class="fa-solid fa-cake-candles" style="color: #d97706;"></i>
+            <span>12 Mei 2008</span>
+          </div>
+          <div class="pill-chip chip-blue">
+            <i class="fa-solid fa-user-graduate" style="color: #0284c7;"></i>
+            <span>Kelas XII</span>
+          </div>
+          <div class="pill-chip chip-orange">
+            <i class="fa-solid fa-school" style="color: #ea580c;"></i>
+            <span>STERIDA</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="hero-btn-row">
+          <button class="btn-cartoon-main" id="btn-copy-all">
+            <i class="fa-solid fa-clipboard-check"></i>
+            <span>Salin Seluruh Biodata</span>
+          </button>
+          <a href="#cerita-section" class="btn-cartoon-ghost">
+            <i class="fa-solid fa-arrow-down-short-wide"></i>
+            <span>Lihat Informasi</span>
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Fleksibel Filter Pills -->
+    <nav class="filter-tabs-container" id="cerita-section" aria-label="Filter Informasi">
+      <button class="tab-pill-btn active" data-target="all">
+        <i class="fa-solid fa-layer-group"></i> Semua Cerita
+      </button>
+      <button class="tab-pill-btn" data-target="identitas">
+        <i class="fa-solid fa-id-card"></i> Biodata Diri
+      </button>
+      <button class="tab-pill-btn" data-target="pendidikan">
+        <i class="fa-solid fa-graduation-cap"></i> Sekolahku
+      </button>
+      <button class="tab-pill-btn" data-target="karakter">
+        <i class="fa-solid fa-award"></i> Karakter & Potensi
+      </button>
+      <button class="tab-pill-btn" data-target="motto">
+        <i class="fa-solid fa-cat"></i> Motto & Motivasi
+      </button>
+    </nav>
+
+    <!-- Main Content Flow -->
+    <main class="flow-sections">
+
+      <!-- SECTION 1: Biodata Diri (Pill Bubbles Interaktif) -->
+      <section class="comic-card-panel" data-sec="identitas">
+        <div class="panel-header-row">
+          <div class="panel-title-text">
+            <div class="title-icon-box box-pink">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <span>Identitas & Biodata Diri</span>
+          </div>
+          <div class="panel-hint-pill">
+            <i class="fa-solid fa-hand-pointer"></i> Klik baris untuk salin
+          </div>
+        </div>
+
+        <div class="bio-pill-grid">
+
+          <div class="bio-pill-item" data-copy="SAKTI BINTANG PAMUNGKAS">
+            <div class="pill-left-content">
+              <div class="pill-icon-square box-yellow">
+                <i class="fa-solid fa-id-badge"></i>
+              </div>
+              <div>
+                <div class="pill-label-title">Nama Lengkap</div>
+                <div class="pill-value-text" style="color: #e11d48;">SAKTI BINTANG PAMUNGKAS</div>
+              </div>
+            </div>
+            <i class="fa-regular fa-copy pill-copy-glyph"></i>
+          </div>
+
+          <div class="bio-pill-item" data-copy="Sakti / Bintang">
+            <div class="pill-left-content">
+              <div class="pill-icon-square box-blue">
+                <i class="fa-solid fa-tag"></i>
+              </div>
+              <div>
+                <div class="pill-label-title">Nama Panggilan</div>
+                <div class="pill-value-text">Sakti / Bintang</div>
+              </div>
+            </div>
+            <i class="fa-regular fa-copy pill-copy-glyph"></i>
+          </div>
+
+          <div class="bio-pill-item" data-copy="Ponorogo, 12 Mei 2008">
+            <div class="pill-left-content">
+              <div class="pill-icon-square box-pink">
+                <i class="fa-solid fa-cake-candles"></i>
+              </div>
+              <div>
+                <div class="pill-label-title">Tempat & Tgl Lahir</div>
+                <div class="pill-value-text">Ponorogo, 12 Mei 2008</div>
+              </div>
+            </div>
+            <i class="fa-regular fa-copy pill-copy-glyph"></i>
+          </div>
+
+          <div class="bio-pill-item" id="item-age" data-copy="18 Tahun">
+            <div class="pill-left-content">
+              <div class="pill-icon-square box-orange">
+                <i class="fa-solid fa-hourglass-half"></i>
+              </div>
+              <div>
+                <div class="pill-label-title">Usia Saat Ini</div>
+                <div class="pill-value-text" id="dyn-age">Menghitung...</div>
+              </div>
+            </div>
+            <i class="fa-regular fa-copy pill-copy-glyph"></i>
+          </div>
+
+          <div class="bio-pill-item" data-copy="Laki-laki">
+            <div class="pill-left-content">
+              <div class="pill-icon-square box-blue">
+                <i class="fa-solid fa-mars"></i>
+              </div>
+              <div>
+                <div class="pill-label-title">Jenis Kelamin</div>
+                <div class="pill-value-text">Laki-laki</div>
+              </div>
+            </div>
+            <i class="fa-regular fa-copy pill-copy-glyph"></i>
+          </div>
+
+          <div class="bio-pill-item" data-copy="Indonesia (WNI)">
+            <div class="pill-left-content">
+              <div class="pill-icon-square box-pink">
+                <i class="fa-solid fa-flag"></i>
+              </div>
+              <div>
+                <div class="pill-label-title">Kewarganegaraan</div>
+                <div class="pill-value-text">Indonesia (WNI)</div>
+              </div>
+            </div>
+            <i class="fa-regular fa-copy pill-copy-glyph"></i>
+          </div>
+
+          <div class="bio-pill-item" data-copy="Ponorogo, Jawa Timur">
+            <div class="pill-left-content">
+              <div class="pill-icon-square box-yellow">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <div class="pill-label-title">Domisili</div>
+                <div class="pill-value-text">Ponorogo, Jawa Timur</div>
+              </div>
+            </div>
+            <i class="fa-regular fa-copy pill-copy-glyph"></i>
+          </div>
+
+          <div class="bio-pill-item" data-copy="Siswa Aktif">
+            <div class="pill-left-content">
+              <div class="pill-icon-square box-orange">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <div class="pill-label-title">Status Akademik</div>
+                <div class="pill-value-text" style="color: #16a34a;">Siswa Aktif</div>
+              </div>
+            </div>
+            <i class="fa-regular fa-copy pill-copy-glyph"></i>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION 2: Pendidikan & Sekolah dengan Logo Resmi SMK PGRI 2 -->
+      <section class="comic-card-panel" data-sec="pendidikan">
+        <div class="panel-header-row">
+          <div class="panel-title-text">
+            <div class="title-icon-box box-blue">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <span>Pendidikan & Sekolah Saat Ini</span>
+          </div>
+          <div class="panel-hint-pill">
+            <i class="fa-solid fa-star"></i> STERIDA Ponorogo
+          </div>
+        </div>
+
+        <div class="education-layout">
+          <div class="edu-text-card">
+            <h3 class="edu-header-title">
+              <i class="fa-solid fa-school" style="color: #0284c7;"></i>
+              <span>SMK PGRI 2 PONOROGO</span>
+            </h3>
+            <span class="edu-badge-active">
+              <i class="fa-solid fa-backpack"></i> Kelas 12 (Tingkat Akhir)
+            </span>
+            <p class="edu-description">
+              Menempuh pendidikan kejuruan di SMK rujukan terdepan Ponorogo. Mempersiapkan keahlian terapan praktis, kedisiplinan berstandar industri, serta kemandirian mental untuk menyongsong masa depan cerah.
+            </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;">
+              <span class="pill-chip chip-yellow" style="padding: 4px 12px; font-size: 0.76rem;">
+                <i class="fa-solid fa-certificate"></i> Angkatan 2008
+              </span>
+              <span class="pill-chip chip-pink" style="padding: 4px 12px; font-size: 0.76rem;">
+                <i class="fa-solid fa-briefcase"></i> Siap Kerja & Mandiri
+              </span>
+            </div>
+          </div>
+
+          <!-- Showcase Logo Resmi SMK PGRI 2 Ponorogo -->
+          <div class="edu-logo-showcase" title="Logo Resmi SMK PGRI 2 Ponorogo">
+            <img src="logo-smk-nobg.png" alt="Logo Resmi SMK PGRI 2 Ponorogo" class="official-school-logo">
+            <div class="school-motto-tag">
+              <i class="fa-solid fa-shield"></i> Terakreditasi Unggul
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Karakter & Potensi Diri -->
+      <section class="comic-card-panel" data-sec="karakter">
+        <div class="panel-header-row">
+          <div class="panel-title-text">
+            <div class="title-icon-box box-orange">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <span>Karakter & Potensi Diri</span>
+          </div>
+          <div class="panel-hint-pill">
+            <i class="fa-solid fa-bolt"></i> Soft Skills Unggulan
+          </div>
+        </div>
+
+        <div class="char-badge-list">
+          <div class="char-badge-item">
+            <div class="char-circle-glyph box-pink">
+              <i class="fa-solid fa-shield-halved" style="color: #e11d48;"></i>
+            </div>
+            <div class="char-text-box">
+              <h4>Disiplin Tinggi</h4>
+              <p>Membiasakan ketepatan waktu, integritas moral, serta kepatuhan aturan sekolah dan lingkungan.</p>
+            </div>
+          </div>
+
+          <div class="char-badge-item">
+            <div class="char-circle-glyph box-yellow">
+              <i class="fa-solid fa-people-group" style="color: #d97706;"></i>
+            </div>
+            <div class="char-text-box">
+              <h4>Kerjasama Tim</h4>
+              <p>Mampu berkoordinasi harmonis, komunikatif, dan saling mendukung dalam tugas kelompok.</p>
+            </div>
+          </div>
+
+          <div class="char-badge-item">
+            <div class="char-circle-glyph box-blue">
+              <i class="fa-solid fa-lightbulb" style="color: #0284c7;"></i>
+            </div>
+            <div class="char-text-box">
+              <h4>Antusias Belajar</h4>
+              <p>Cepat tanggap, rasa ingin tahu tinggi, dan adaptif terhadap perkembangan teknologi baru.</p>
+            </div>
+          </div>
+
+          <div class="char-badge-item">
+            <div class="char-circle-glyph box-orange">
+              <i class="fa-solid fa-bullseye" style="color: #ea580c;"></i>
+            </div>
+            <div class="char-text-box">
+              <h4>Tanggung Jawab</h4>
+              <p>Menuntaskan setiap amanah dan tugas praktikum dengan teliti demi hasil optimal.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: Motto Hidup & Maskot Pop Cat Cutout -->
+      <section class="comic-card-panel" data-sec="motto">
+        <div class="panel-header-row">
+          <div class="panel-title-text">
+            <div class="title-icon-box box-yellow">
+              <i class="fa-solid fa-cat"></i>
+            </div>
+            <span>Motto Hidup & Visi Masa Depan</span>
+          </div>
+          <div class="panel-hint-pill">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Inspirasi Harian
+          </div>
+        </div>
+
+        <div class="motto-feature-row">
+          <!-- Pop Cat Cutout Maskot -->
+          <div class="popcat-interactive-pod" id="popcat-box" title="Klik Pop Cat!">
+            <img src="cat-pop-nobg.png" alt="Pop Cat Transparent Cutout">
+          </div>
+
+          <!-- Speech Box -->
+          <div class="motto-bubble-quote">
+            <p class="motto-quote-p">
+              "Sesuai nama Bintang, aku bertekad untuk terus memancarkan karya dan prestasi terbaik, pantang menyerah dalam belajar, dan siap melangkah sukses ke dunia masa depan!"
+            </p>
+            <div class="motto-author-tag">
+              <i class="fa-solid fa-star"></i>
+              <span>― SAKTI BINTANG PAMUNGKAS</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; <span id="footer-year">2026</span> Biodata Resmi <span>SAKTI BINTANG PAMUNGKAS</span> • SMK PGRI 2 Ponorogo</p>
+      <p style="font-size: 0.76rem; margin-top: 5px; color: #475569;">Klik kucing-kucing yang melayang di layar untuk mendengarkan suara pop! <i class="fa-solid fa-paw" style="color: #e11d48;"></i></p>
+    </footer>
+
+  </div>
+
+  <!-- Comic Pop Toast Notification -->
+  <div class="comic-pop-toast" id="pop-toast">
+    <i class="fa-solid fa-circle-check" style="font-size: 1.25rem; color: #16a34a;"></i>
+    <span id="toast-message">Tersalin ke clipboard!</span>
+  </div>
+
+  <script>
+    /* ========================================================
+       1. TYPEWRITER EFFECT
+       ======================================================== */
+    const phrases = [
+      "Siswa Kelas 12 SMK PGRI 2 Ponorogo",
+      "Kelahiran Ponorogo, 12 Mei 2008",
+      "Generasi Muda Berkarakter & Unggul",
+      "Bangga Menjadi Bagian dari STERIDA!"
+    ];
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    const typeElem = document.getElementById('typewriter');
+
+    function typeLoop() {
+      const current = phrases[phraseIdx];
+      if (isDeleting) {
+        typeElem.textContent = current.substring(0, charIdx - 1);
+        charIdx--;
+      } else {
+        typeElem.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+      }
+
+      let speed = isDeleting ? 30 : 70;
+
+      if (!isDeleting && charIdx === current.length) {
+        speed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+        speed = 400;
+      }
+
+      setTimeout(typeLoop, speed);
+    }
+    typeLoop();
+
+
+    /* ========================================================
+       2. HITUNG USIA OTOMATIS
+       ======================================================== */
+    function calcAge(birthDateString) {
+      const birth = new Date(birthDateString);
+      const now = new Date();
+      let age = now.getFullYear() - birth.getFullYear();
+      const m = now.getMonth() - birth.getMonth();
+      if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) {
+        age--;
+      }
+      return age;
+    }
+    const currentAge = calcAge('2008-05-12');
+    const ageElem = document.getElementById('dyn-age');
+    if (ageElem) {
+      ageElem.textContent = `${currentAge} Tahun`;
+      document.getElementById('item-age').setAttribute('data-copy', `${currentAge} Tahun`);
+    }
+
+
+    /* ========================================================
+       3. TOAST NOTIFICATION & AUDIO POP EFFECT (Web Audio API)
+       ======================================================== */
+    const toast = document.getElementById('pop-toast');
+    const toastMsg = document.getElementById('toast-message');
+    let toastTimer;
+
+    function showPopToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2400);
+    }
+
+    function playPopAudio(freq = 420) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.8, audioCtx.currentTime + 0.09);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.09);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.09);
+      } catch (e) {}
+    }
+
+
+    /* ========================================================
+       4. INTERAKSI KUCING-KUCING MELAYANG DI BACKGROUND
+       ======================================================== */
+    const catSoundMessages = {
+      banana: "🍌 Banana Cat: Nya~ Meong!",
+      pop: "🐱 Pop Cat: POP! Meong!",
+      grey: "🐾 Grey Cat: Meong~ Semangat Sakti!"
+    };
+
+    document.querySelectorAll('.floating-cat-item').forEach(cat => {
+      cat.addEventListener('click', (e) => {
+        const type = cat.getAttribute('data-cat') || 'pop';
+        const freq = type === 'banana' ? 520 : (type === 'grey' ? 360 : 440);
+        playPopAudio(freq);
+
+        cat.style.animation = 'none';
+        cat.offsetHeight; // trigger reflow
+        cat.style.animation = 'catClickWiggle 0.4s ease';
+
+        const msg = catSoundMessages[type] || "Meong! 🐾";
+        showPopToast(msg);
+      });
+    });
+
+    // Pop Cat di dalam hero card dan card motto
+    const popcatBox = document.getElementById('popcat-box');
+    const mascotTop = document.getElementById('mascot-cat-top');
+
+    function triggerPopCat(el) {
+      playPopAudio(460);
+      el.style.animation = 'none';
+      el.offsetHeight;
+      el.style.animation = 'catClickWiggle 0.35s ease';
+      showPopToast("🐱 Pop Cat: POP!");
+    }
+
+    if (popcatBox) popcatBox.addEventListener('click', () => triggerPopCat(popcatBox));
+    if (mascotTop) mascotTop.addEventListener('click', () => triggerPopCat(mascotTop));
+
+
+    /* ========================================================
+       5. FLEKSIBEL: GANTI 1 WARNA BACKGROUND COLORFUL
+       ======================================================== */
+    document.querySelectorAll('.color-swatch-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        const newColor = dot.getAttribute('data-bg');
+        document.documentElement.style.setProperty('--bg-active', newColor);
+        playPopAudio(500);
+        showPopToast("Warna background diubah!");
+      });
+    });
+
+
+    /* ========================================================
+       6. FLEKSIBEL: FILTER KATEGORI TABS
+       ======================================================== */
+    const tabButtons = document.querySelectorAll('.tab-pill-btn');
+    const panelSections = document.querySelectorAll('.comic-card-panel');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const target = btn.getAttribute('data-target');
+
+        panelSections.forEach(sec => {
+          if (target === 'all' || sec.getAttribute('data-sec') === target) {
+            sec.style.display = 'block';
+            sec.style.animation = 'bouncePop 0.4s ease forwards';
+          } else {
+            sec.style.display = 'none';
+          }
+        });
+      });
+    });
+
+
+    /* ========================================================
+       7. SALIN SPESIFIK & SALIN LENGKAP
+       ======================================================== */
+    const fullBioText = `BIODATA SISWA
+Nama Lengkap     : SAKTI BINTANG PAMUNGKAS
+Nama Panggilan   : Sakti / Bintang
+Tempat, Tgl Lahir: Ponorogo, 12 Mei 2008
+Usia             : ${currentAge} Tahun
+Pendidikan       : Kelas 12
+Sekolah          : SMK PGRI 2 Ponorogo (STERIDA)
+Jenis Kelamin    : Laki-laki
+Kewarganegaraan  : Indonesia (WNI)
+Domisili         : Ponorogo, Jawa Timur
+Status           : Siswa Aktif
+========================`;
+
+    const copyButtons = [document.getElementById('btn-copy-all'), document.getElementById('btn-quick-copy')];
+    copyButtons.forEach(b => {
+      if (b) {
+        b.addEventListener('click', () => {
+          navigator.clipboard.writeText(fullBioText).then(() => {
+            playPopAudio();
+            showPopToast("Semua biodata berhasil disalin!");
+          });
+        });
+      }
+    });
+
+    document.querySelectorAll('.bio-pill-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const val = item.getAttribute('data-copy');
+        if (val) {
+          navigator.clipboard.writeText(val).then(() => {
+            playPopAudio();
+            showPopToast(`"${val}" disalin!`);
+          });
+        }
+      });
+    });
+
+    document.getElementById('btn-print').addEventListener('click', () => {
+      window.print();
+    });
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
