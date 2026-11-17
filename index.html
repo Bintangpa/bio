@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Biodata Diri — Sakti Bintang Pamungkas</title>
 
   <!-- Google Fonts: Fredoka & Quicksand (Playful Cartoon & Comic Fonts) -->
@@ -15,11 +15,11 @@
 
   <style>
     /* ========================================================
-       TEMA: COLORFUL POP-CARTOON DENGAN KUCING MELAYANG & LOGO RESMI
+       TEMA: COLORFUL POP-CARTOON RESPONSIF DI HP & DESKTOP
        Warna Default: Vibrant Sunshine Cartoon Yellow (#ffdf59)
        ======================================================== */
     :root {
-      --bg-active: #ffdf59; /* Satu warna background utama yang cerah & colorful */
+      --bg-active: #ffdf59;
       --c-dark: #1a1727;
       --c-border: #1a1727;
       
@@ -48,27 +48,32 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Quicksand', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      position: relative;
     }
 
     body {
       background-color: var(--bg-active);
       color: var(--c-dark);
       min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
       transition: background-color 0.4s ease;
     }
 
     /* ========================================================
        KUCING-KUCING BERGERAK MELAYANG DI BACKGROUND WEB
-       (Semua background kucing sudah dihapus bersih & transparan)
        ======================================================== */
     .floating-cat-bg-layer {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
       z-index: 2;
       overflow: hidden;
@@ -86,43 +91,43 @@
       transform: scale(1.25) rotate(10deg) !important;
     }
 
-    /* Kucing 1: Banana Cat (Kiri Atas Melayang) */
+    /* Kucing 1: Banana Cat */
     .cat-float-1 {
-      top: 12%;
+      top: 10%;
       left: 4%;
-      width: 82px;
+      width: 80px;
       animation: driftFloat1 9s ease-in-out infinite alternate;
     }
 
-    /* Kucing 2: Pop Cat (Kanan Atas Melayang) */
+    /* Kucing 2: Pop Cat */
     .cat-float-2 {
-      top: 22%;
+      top: 20%;
       right: 4%;
-      width: 88px;
+      width: 86px;
       animation: driftFloat2 8s ease-in-out infinite alternate;
     }
 
-    /* Kucing 3: Grey Walking Cat (Kiri Tengah Melayang) */
+    /* Kucing 3: Grey Cat */
     .cat-float-3 {
-      top: 55%;
+      top: 52%;
       left: 3%;
-      width: 92px;
+      width: 88px;
       animation: driftFloat3 11s ease-in-out infinite alternate;
     }
 
-    /* Kucing 4: Banana Cat (Kanan Bawah Melayang) */
+    /* Kucing 4: Banana Cat */
     .cat-float-4 {
-      top: 75%;
-      right: 5%;
-      width: 78px;
+      top: 74%;
+      right: 4%;
+      width: 76px;
       animation: driftFloat1 10s ease-in-out infinite alternate-reverse;
     }
 
-    /* Kucing 5: Pop Cat (Tengah Bawah Melayang) */
+    /* Kucing 5: Pop Cat */
     .cat-float-5 {
-      bottom: 6%;
-      left: 12%;
-      width: 74px;
+      bottom: 5%;
+      left: 10%;
+      width: 72px;
       animation: driftFloat2 12s ease-in-out infinite alternate;
     }
 
@@ -148,8 +153,9 @@
       100% { transform: translate(0, 0) scale(1) rotate(0deg); }
     }
 
-    /* Container */
+    /* Container Wrapper */
     .app-wrapper {
+      width: 100%;
       max-width: 1040px;
       margin: 0 auto;
       padding: 24px 20px 80px 20px;
@@ -165,22 +171,23 @@
       background: var(--c-white);
       border: 3px solid var(--c-border);
       border-radius: var(--radius-pill);
-      padding: 10px 22px;
+      padding: 10px 20px;
       box-shadow: var(--comic-shadow);
-      margin-bottom: 26px;
+      margin-bottom: 24px;
+      gap: 12px;
       animation: bouncePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .brand-section {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      flex-shrink: 0;
     }
-    /* Logo Sekolah di Header */
     .school-logo-top {
-      width: 36px;
-      height: 42px;
+      width: 34px;
+      height: 40px;
       object-fit: contain;
-      filter: drop-shadow(2px 2px 0px rgba(26, 23, 39, 0.3));
+      filter: drop-shadow(2px 2px 0px rgba(26, 23, 39, 0.25));
       animation: wiggle 4s infinite ease-in-out;
     }
     .brand-title {
@@ -188,20 +195,28 @@
       font-weight: 700;
       font-size: 1.15rem;
       color: var(--c-dark);
-      letter-spacing: 0.4px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
     }
     .brand-badge {
       background: var(--c-blue-light);
       border: 2px solid var(--c-border);
-      padding: 4px 14px;
+      padding: 4px 12px;
       border-radius: var(--radius-pill);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 800;
       color: var(--c-dark);
       box-shadow: 2px 2px 0px var(--c-border);
       display: flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
+    }
+
+    .top-right-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     /* Theme Color Switcher */
@@ -211,13 +226,14 @@
       gap: 6px;
     }
     .color-swatch-dot {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       border: 2px solid var(--c-border);
       cursor: pointer;
       box-shadow: 1px 1px 0px var(--c-border);
       transition: transform 0.2s ease;
+      flex-shrink: 0;
     }
     .color-swatch-dot:hover {
       transform: scale(1.25);
@@ -243,6 +259,7 @@
       box-shadow: 2px 2px 0px var(--c-border);
       transition: all 0.2s ease;
       text-decoration: none;
+      white-space: nowrap;
     }
     .btn-top-action:hover {
       transform: translate(-2px, -2px);
@@ -256,55 +273,62 @@
       background: var(--c-white);
       border: 3px solid var(--c-border);
       border-radius: 32px;
-      padding: 35px;
+      padding: 34px;
       box-shadow: var(--comic-shadow-lg);
-      margin-bottom: 26px;
+      margin-bottom: 24px;
       display: grid;
       grid-template-columns: 310px 1fr;
-      gap: 34px;
+      gap: 32px;
       align-items: center;
       position: relative;
       animation: bouncePop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    /* Profile Photo Stage */
+    /* ========================================================
+       STAGE FOTO ORANG: KANAN KIRI PENUH TANPA SISA GAP
+       ======================================================== */
     .photo-stage-wrapper {
       position: relative;
       width: 100%;
-      height: 360px;
+      max-width: 310px;
+      aspect-ratio: 768 / 980; /* Sesuai rasio asli foto orang */
+      margin: 0 auto;
       background: linear-gradient(135deg, var(--c-pink-light) 0%, var(--c-yellow) 55%, var(--c-blue-light) 100%);
       border: 3px solid var(--c-border);
       border-radius: 28px;
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       justify-content: center;
       box-shadow: var(--comic-shadow);
       overflow: hidden;
     }
+
+    /* FOTO PENUH KANAN KIRI & BAGIAN KEPALA/ATAS PAS */
     .photo-stage-wrapper img.profile-img {
-      width: 90%;
-      height: 95%;
-      object-fit: contain;
-      object-position: bottom center;
-      filter: drop-shadow(4px 4px 0px rgba(26, 23, 39, 0.25));
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: drop-shadow(0px 6px 12px rgba(26, 23, 39, 0.2));
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 2;
     }
     .photo-stage-wrapper:hover img.profile-img {
-      transform: scale(1.05) translateY(-4px);
+      transform: scale(1.04);
     }
 
     /* Cat Mascot Badge on Profile Card */
     .cat-mascot-badge {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 62px;
-      height: 62px;
+      top: 10px;
+      right: 10px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       background: var(--c-pink);
       border: 3px solid var(--c-border);
-      box-shadow: 3px 3px 0px var(--c-border);
+      box-shadow: 2px 2px 0px var(--c-border);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -314,8 +338,8 @@
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .cat-mascot-badge img {
-      width: 85%;
-      height: 85%;
+      width: 82%;
+      height: 82%;
       object-fit: contain;
     }
     .cat-mascot-badge:hover {
@@ -330,20 +354,23 @@
       background: var(--c-white);
       border: 2px solid var(--c-border);
       color: var(--c-dark);
-      padding: 5px 14px;
+      padding: 6px 16px;
       border-radius: var(--radius-pill);
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 800;
       box-shadow: 2px 2px 0px var(--c-border);
       z-index: 3;
       display: flex;
       align-items: center;
       gap: 8px;
+      max-width: 90%;
+      white-space: nowrap;
     }
     .school-label-badge img.mini-logo {
       width: 18px;
       height: 22px;
       object-fit: contain;
+      flex-shrink: 0;
     }
 
     /* Hero Bio Details */
@@ -372,11 +399,12 @@
 
     .profile-heading {
       font-family: 'Fredoka', sans-serif;
-      font-size: 2.7rem;
+      font-size: 2.6rem;
       font-weight: 700;
       color: var(--c-dark);
-      line-height: 1.1;
+      line-height: 1.15;
       letter-spacing: -0.5px;
+      word-break: break-word;
     }
     .profile-heading span.color-mark {
       background: var(--c-yellow);
@@ -394,6 +422,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
     }
     .type-cursor {
       border-right: 3px solid #0284c7;
@@ -406,13 +435,13 @@
     .quick-pill-cloud {
       display: flex;
       flex-wrap: wrap;
-      gap: 9px;
+      gap: 8px;
       margin-top: 4px;
     }
     .pill-chip {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       padding: 7px 14px;
       border-radius: var(--radius-pill);
       border: 2px solid var(--c-border);
@@ -448,6 +477,7 @@
       font-weight: 600;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       cursor: pointer;
       box-shadow: var(--comic-shadow);
@@ -470,6 +500,7 @@
       font-weight: 600;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       cursor: pointer;
       box-shadow: var(--comic-shadow);
@@ -482,12 +513,12 @@
       background: var(--c-blue-light);
     }
 
-    /* Category Filter Tabs */
+    /* Category Filter Tabs (Scrollable di HP) */
     .filter-tabs-container {
       display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
+      gap: 8px;
       justify-content: center;
+      flex-wrap: wrap;
       margin-bottom: 24px;
     }
     .tab-pill-btn {
@@ -505,6 +536,7 @@
       display: flex;
       align-items: center;
       gap: 7px;
+      white-space: nowrap;
     }
     .tab-pill-btn:hover {
       transform: translate(-2px, -2px);
@@ -549,6 +581,7 @@
       margin-bottom: 20px;
       padding-bottom: 12px;
       border-bottom: 2px dashed rgba(26, 23, 39, 0.2);
+      gap: 10px;
     }
     .panel-title-text {
       font-family: 'Fredoka', sans-serif;
@@ -570,6 +603,7 @@
       font-size: 1.15rem;
       box-shadow: 2px 2px 0px var(--c-border);
       color: var(--c-dark);
+      flex-shrink: 0;
     }
     .box-pink { background: var(--c-pink-light); }
     .box-yellow { background: var(--c-yellow); }
@@ -587,6 +621,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
     }
 
     /* Fleksibel Biodata Bubble Grid */
@@ -617,6 +652,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      min-width: 0;
     }
     .pill-icon-square {
       width: 36px;
@@ -631,8 +667,11 @@
       box-shadow: 2px 2px 0px var(--c-border);
       flex-shrink: 0;
     }
+    .pill-text-wrap {
+      min-width: 0;
+    }
     .pill-label-title {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
       color: #64748b;
       text-transform: uppercase;
@@ -643,11 +682,13 @@
       font-weight: 800;
       color: var(--c-dark);
       margin-top: 1px;
+      word-break: break-word;
     }
     .pill-copy-glyph {
       color: #94a3b8;
       font-size: 0.85rem;
       transition: color 0.2s ease;
+      flex-shrink: 0;
     }
     .bio-pill-item:hover .pill-copy-glyph {
       color: var(--c-pink);
@@ -676,6 +717,7 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 6px;
+      word-break: break-word;
     }
     .edu-badge-active {
       display: inline-block;
@@ -709,8 +751,8 @@
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .edu-logo-showcase img.official-school-logo {
-      width: 130px;
-      height: 155px;
+      width: 125px;
+      height: 150px;
       object-fit: contain;
       filter: drop-shadow(3px 3px 0px rgba(26, 23, 39, 0.25));
       transition: transform 0.3s ease;
@@ -718,9 +760,6 @@
     .edu-logo-showcase:hover {
       transform: scale(1.05) rotate(2deg);
       box-shadow: var(--comic-shadow-lg);
-    }
-    .edu-logo-showcase:hover img.official-school-logo {
-      transform: scale(1.08);
     }
     .school-motto-tag {
       margin-top: 10px;
@@ -731,6 +770,7 @@
       font-size: 0.74rem;
       font-weight: 800;
       color: var(--c-dark);
+      white-space: nowrap;
     }
 
     /* Karakter & Potensi */
@@ -784,15 +824,15 @@
     /* Motto Section dengan Kucing Interaktif */
     .motto-feature-row {
       display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 22px;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
       align-items: center;
     }
     .popcat-interactive-pod {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       border: 3px solid var(--c-border);
-      border-radius: 28px;
+      border-radius: 26px;
       background: var(--c-pink);
       box-shadow: var(--comic-shadow);
       display: flex;
@@ -800,6 +840,7 @@
       justify-content: center;
       cursor: pointer;
       overflow: hidden;
+      margin: 0 auto;
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .popcat-interactive-pod img {
@@ -820,7 +861,7 @@
       background: var(--c-yellow-light);
       border: 3px solid var(--c-border);
       border-radius: 24px;
-      padding: 22px 26px;
+      padding: 22px 24px;
       box-shadow: var(--comic-shadow-sm);
       position: relative;
     }
@@ -836,7 +877,7 @@
     }
     .motto-quote-p {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--c-dark);
       line-height: 1.5;
@@ -917,37 +958,44 @@
       100% { transform: scale(1); }
     }
 
-    /* Responsive */
+    /* ========================================================
+       RESPONSIF MOBILE / SMARTPHONE (< 860px & < 550px)
+       ======================================================== */
     @media (max-width: 860px) {
+      .app-wrapper {
+        padding: 16px 14px 70px 14px;
+      }
       .hero-cartoon-card {
         grid-template-columns: 1fr;
-        padding: 26px 20px;
+        padding: 26px 18px;
         text-align: center;
+        gap: 22px;
       }
       .photo-stage-wrapper {
-        max-width: 270px;
-        height: 320px;
+        max-width: 290px;
+        width: 100%;
         margin: 0 auto;
       }
       .hero-info-column {
         align-items: center;
+      }
+      .profile-heading {
+        font-size: 2.1rem;
       }
       .typewriter-cartoon, .quick-pill-cloud, .hero-btn-row {
         justify-content: center;
       }
       .education-layout {
         grid-template-columns: 1fr;
+        gap: 18px;
       }
       .edu-logo-showcase {
-        max-width: 260px;
+        max-width: 240px;
         margin: 0 auto;
       }
       .motto-feature-row {
         grid-template-columns: 1fr;
         text-align: center;
-      }
-      .popcat-interactive-pod {
-        margin: 0 auto;
       }
       .motto-bubble-quote::before {
         display: none;
@@ -957,25 +1005,113 @@
       }
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 600px) {
       .app-wrapper {
-        padding: 16px 12px 60px 12px;
+        padding: 12px 10px 60px 10px;
       }
-      .profile-heading {
-        font-size: 2rem;
+      
+      /* Top Bar Mobile */
+      .top-bar-comic {
+        padding: 8px 12px;
+        gap: 8px;
+        border-radius: 20px;
       }
-      .comic-card-panel {
-        padding: 20px 16px;
+      .school-logo-top {
+        width: 28px;
+        height: 34px;
+      }
+      .brand-title {
+        font-size: 0.95rem;
       }
       .brand-badge {
+        display: none; /* Sembunyikan badge panjang di HP agar tidak sempit */
+      }
+      .color-swatch-dot {
+        width: 18px;
+        height: 18px;
+      }
+      .btn-top-action {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+      }
+      .btn-top-action span {
+        display: none; /* Icon-only di HP untuk menghemat ruang */
+      }
+
+      /* Hero Card di HP */
+      .hero-cartoon-card {
+        padding: 20px 14px;
+        border-radius: 24px;
+      }
+      .photo-stage-wrapper {
+        max-width: 270px;
+        border-radius: 22px;
+      }
+      .profile-heading {
+        font-size: 1.85rem;
+      }
+      .typewriter-cartoon {
+        font-size: 0.98rem;
+      }
+      .hero-btn-row {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-cartoon-main, .btn-cartoon-ghost {
+        width: 100%;
+      }
+
+      /* Filter Tabs Scrollable di HP */
+      .filter-tabs-container {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 4px 4px 10px 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .filter-tabs-container::-webkit-scrollbar {
         display: none;
       }
-      .theme-palette-picker {
-        display: none;
+      .tab-pill-btn {
+        flex-shrink: 0;
+        padding: 7px 14px;
+        font-size: 0.85rem;
       }
+
+      /* Panel Cards di HP */
+      .comic-card-panel {
+        padding: 18px 14px;
+        border-radius: 20px;
+      }
+      .panel-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .panel-title-text {
+        font-size: 1.15rem;
+      }
+      .bio-pill-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .bio-pill-item {
+        padding: 11px 13px;
+      }
+      .pill-value-text {
+        font-size: 0.86rem;
+      }
+
+      /* Kucing Melayang di HP dibuat lebih proporsional */
       .floating-cat-item {
-        width: 60px !important;
+        opacity: 0.65;
       }
+      .cat-float-1 { width: 50px; left: 1%; top: 6%; }
+      .cat-float-2 { width: 54px; right: 1%; top: 16%; }
+      .cat-float-3 { width: 52px; left: 1%; top: 52%; }
+      .cat-float-4 { width: 48px; right: 1%; top: 72%; }
+      .cat-float-5 { width: 48px; left: 4%; bottom: 3%; }
     }
 
     @media print {
@@ -989,7 +1125,7 @@
 
   <!-- ========================================================
        KUCING-KUCING BERGERAK MELAYANG DI BACKGROUND WEB
-       (Background transparan, bisa diklik untuk suara meong/pop!)
+       (Semua background sudah transparan & bisa diklik)
        ======================================================== -->
   <div class="floating-cat-bg-layer" aria-hidden="true">
     <!-- 1. Banana Cat Melayang Kiri Atas -->
@@ -1022,17 +1158,16 @@
         </span>
       </div>
 
-      <!-- Theme Color Switcher -->
-      <div class="theme-palette-picker" title="Ubah Satu Warna Background!">
-        <span style="font-size: 0.72rem; font-weight: 800; color: #64748b; margin-right: 4px;">WARNA:</span>
-        <div class="color-swatch-dot swatch-yellow" data-bg="#ffdf59" title="Kuning Ceria"></div>
-        <div class="color-swatch-dot swatch-blue" data-bg="#70d6ff" title="Biru Langit"></div>
-        <div class="color-swatch-dot swatch-pink" data-bg="#ff97b7" title="Merah Muda Permen"></div>
-        <div class="color-swatch-dot swatch-mint" data-bg="#80ed99" title="Mint Segar"></div>
-        <div class="color-swatch-dot swatch-orange" data-bg="#ffaa5a" title="Oranye Enerjik"></div>
-      </div>
+      <!-- Controls: Theme Color Picker & Buttons -->
+      <div class="top-right-controls">
+        <div class="theme-palette-picker" title="Ubah Satu Warna Background!">
+          <div class="color-swatch-dot swatch-yellow" data-bg="#ffdf59" title="Kuning Ceria"></div>
+          <div class="color-swatch-dot swatch-blue" data-bg="#70d6ff" title="Biru Langit"></div>
+          <div class="color-swatch-dot swatch-pink" data-bg="#ff97b7" title="Merah Muda Permen"></div>
+          <div class="color-swatch-dot swatch-mint" data-bg="#80ed99" title="Mint Segar"></div>
+          <div class="color-swatch-dot swatch-orange" data-bg="#ffaa5a" title="Oranye Enerjik"></div>
+        </div>
 
-      <div style="display: flex; gap: 8px;">
         <button class="btn-top-action" id="btn-quick-copy" title="Salin Biodata">
           <i class="fa-regular fa-copy"></i>
           <span>Salin</span>
@@ -1047,14 +1182,14 @@
     <!-- Hero Cartoon Card -->
     <section class="hero-cartoon-card">
       
-      <!-- Stage Foto Transparan dengan Maskot & Logo Resmi -->
+      <!-- Stage Foto: Kanan Kiri Penuh Tanpa Sisa Gap -->
       <div class="photo-stage-wrapper">
         <!-- Maskot Pop Cat yang sudah dihapus backgroundnya -->
         <div class="cat-mascot-badge" id="mascot-cat-top" title="Klik Pop Cat!">
           <img src="cat-pop-nobg.png" alt="Pop Cat Cartoon Cutout">
         </div>
 
-        <!-- Foto Resmi Sakti Bintang Pamungkas (Background Transparan) -->
+        <!-- Foto Resmi Sakti Bintang Pamungkas (Penuh Kanan Kiri) -->
         <img src="foto-nobg.png" alt="Sakti Bintang Pamungkas" class="profile-img">
 
         <!-- Lencana Logo Resmi SMK PGRI 2 Ponorogo -->
@@ -1115,7 +1250,7 @@
 
     </section>
 
-    <!-- Fleksibel Filter Pills -->
+    <!-- Fleksibel Filter Pills (Bisa di-swipe halus di HP) -->
     <nav class="filter-tabs-container" id="cerita-section" aria-label="Filter Informasi">
       <button class="tab-pill-btn active" data-target="all">
         <i class="fa-solid fa-layer-group"></i> Semua Cerita
@@ -1158,7 +1293,7 @@
               <div class="pill-icon-square box-yellow">
                 <i class="fa-solid fa-id-badge"></i>
               </div>
-              <div>
+              <div class="pill-text-wrap">
                 <div class="pill-label-title">Nama Lengkap</div>
                 <div class="pill-value-text" style="color: #e11d48;">SAKTI BINTANG PAMUNGKAS</div>
               </div>
@@ -1171,7 +1306,7 @@
               <div class="pill-icon-square box-blue">
                 <i class="fa-solid fa-tag"></i>
               </div>
-              <div>
+              <div class="pill-text-wrap">
                 <div class="pill-label-title">Nama Panggilan</div>
                 <div class="pill-value-text">Sakti / Bintang</div>
               </div>
@@ -1184,7 +1319,7 @@
               <div class="pill-icon-square box-pink">
                 <i class="fa-solid fa-cake-candles"></i>
               </div>
-              <div>
+              <div class="pill-text-wrap">
                 <div class="pill-label-title">Tempat & Tgl Lahir</div>
                 <div class="pill-value-text">Ponorogo, 12 Mei 2008</div>
               </div>
@@ -1197,7 +1332,7 @@
               <div class="pill-icon-square box-orange">
                 <i class="fa-solid fa-hourglass-half"></i>
               </div>
-              <div>
+              <div class="pill-text-wrap">
                 <div class="pill-label-title">Usia Saat Ini</div>
                 <div class="pill-value-text" id="dyn-age">Menghitung...</div>
               </div>
@@ -1210,7 +1345,7 @@
               <div class="pill-icon-square box-blue">
                 <i class="fa-solid fa-mars"></i>
               </div>
-              <div>
+              <div class="pill-text-wrap">
                 <div class="pill-label-title">Jenis Kelamin</div>
                 <div class="pill-value-text">Laki-laki</div>
               </div>
@@ -1223,7 +1358,7 @@
               <div class="pill-icon-square box-pink">
                 <i class="fa-solid fa-flag"></i>
               </div>
-              <div>
+              <div class="pill-text-wrap">
                 <div class="pill-label-title">Kewarganegaraan</div>
                 <div class="pill-value-text">Indonesia (WNI)</div>
               </div>
@@ -1236,7 +1371,7 @@
               <div class="pill-icon-square box-yellow">
                 <i class="fa-solid fa-location-dot"></i>
               </div>
-              <div>
+              <div class="pill-text-wrap">
                 <div class="pill-label-title">Domisili</div>
                 <div class="pill-value-text">Ponorogo, Jawa Timur</div>
               </div>
@@ -1249,7 +1384,7 @@
               <div class="pill-icon-square box-orange">
                 <i class="fa-solid fa-shield-halved"></i>
               </div>
-              <div>
+              <div class="pill-text-wrap">
                 <div class="pill-label-title">Status Akademik</div>
                 <div class="pill-value-text" style="color: #16a34a;">Siswa Aktif</div>
               </div>
@@ -1401,7 +1536,7 @@
     <!-- Footer -->
     <footer>
       <p>&copy; <span id="footer-year">2026</span> Biodata Resmi <span>SAKTI BINTANG PAMUNGKAS</span> • SMK PGRI 2 Ponorogo</p>
-      <p style="font-size: 0.76rem; margin-top: 5px; color: #475569;">Klik kucing-kucing yang melayang di layar untuk mendengarkan suara pop! <i class="fa-solid fa-paw" style="color: #e11d48;"></i></p>
+      <p style="font-size: 0.76rem; margin-top: 5px; color: #475569;">Gaya kartun warna-warni ceria & responsif di HP <i class="fa-solid fa-heart" style="color: #e11d48;"></i></p>
     </footer>
 
   </div>
